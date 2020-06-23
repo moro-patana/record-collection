@@ -1,14 +1,12 @@
 // An array stores all of the record
 const record = [
     {
-      id: 1,
       title:"The Most Relevant",
       artist:"Ben",
       url: "http://relevant.com",
       tracks: ["1888", "You are so creative"],
     },
     {
-      id: 2,
       title:"Famous art",
       artist:"Ben",
       url: "http://creativity.com",
@@ -16,7 +14,6 @@ const record = [
     },
 
     {
-      id: 3,
       title:"Horse",
       artist:"Tom",
       url: "http://art.com",
@@ -63,21 +60,28 @@ return;
 };
 
 // Update the record which already exists
+const updateRecord = () => {
+    let indexToUpdate = Number(prompt(`Which record do you want to update? Choose the index number.`))
+    let updatedRecord = record.splice(indexToUpdate--, 1);
+    console.log(updatedRecord);
 
-/*const updateRecord = () => {
-    let updatedRecordTitle = prompt("Do you want to update the tittle?");
-    let updatedRecordArtist = prompt("Do you want to update the artist's name");
-    let updatedRecordUrl = prompt("Do you want to update the the url");
-    let updatedRecordTracks = prompt("Do you want to update the tracks");
+    let updatedTitle = prompt("Do you want to update the tittle?");
+    let updatedArtist = prompt("Do you want to update the artist's name");
+    let updatedUrl = prompt("Do you want to update the the url");
+    let updatedTracks = prompt("Do you want to update the tracks");
+if (!updatedUrl.startsWith (`http://`)) {
+    updatedUrl = `http://${updatedUrl}`;
+}
 
-    let updatedRecord = {
-        title: updatedRecordTitle,
-        artist: updatedRecordArtist,
-        url: updatedRecordUrl,
-        tracks: updatedRecordTracks,
-    }
-    record.push(updatedRecord);
-};*/
+let newVersionRecord = {
+    title: updatedTitle,
+    artist: updatedArtist,
+    url: updatedUrl,
+    tracks: updatedTracks
+}
+record.push(newVersionRecord);
+}
+
 
 // All of the options
 
@@ -99,27 +103,8 @@ switch (menuOption) {
     case 2:
         addNewRecord();
         break;
-    case 3:
-        let indexToUpdate = Number(prompt(`Which record do you want to update? Choose the index number.`))
-        let updatedId = prompt("Update the id")
-        let updatedTitle = prompt("Do you want to update the tittle?");
-        let updatedArtist = prompt("Do you want to update the artist's name");
-        let updatedUrl = prompt("Do you want to update the the url");
-        let updatedTracks = prompt("Do you want to update the tracks");
-    
-        let id = newItem.id;
-        let updatedRecord = record.findIndex(item => item.id === id);
-        record.splice(indexToUpdate, 1, newItem);
-        console.log(updatedRecord);
-        let newItem = {
-            id: updatedId,
-            title: updatedTitle,
-            artist: updatedArtist,
-            url: updatedUrl,
-            tracks: updatedTracks
-        }
-        record.push(newItem);
-console.log(record);
+        case 3:
+            updateRecord();
         break;
 // Remove record
 
